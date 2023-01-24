@@ -57,7 +57,7 @@ namespace TicTacToe_Misison3
             // loop through the cols and check if all values in cols are equal
             for (int i = 0; i < 3; i++)
             {
-                if ((arr[i, 0] == arr[i, 1]) && (arr[i, 0] == arr[i, 2]) && ((arr[0, i] == 'X') || (arr[0, i] == 'O')))
+                if ((arr[i, 0] == arr[i, 1]) && (arr[i, 0] == arr[i, 2]) && ((arr[i, 0] == 'X') || (arr[i, 0] == 'O')))
                 {
                     winningShape = arr[i, 0];
                 }
