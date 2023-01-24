@@ -28,7 +28,7 @@ namespace TicTacToe_Misison3
             // winner variable, 0 means no winner, 1 means x winner, 2 means o winner
             // default no winner
             int winner = 0;
-
+            
             // stores if x or o wins, space if no win
             char winningShape = ' ';
 
@@ -63,11 +63,11 @@ namespace TicTacToe_Misison3
             }
 
             // check if x or o has won and set the return value
-            if (winningShape == 'x')
+            if (winningShape == 'X')
             {
                 winner = 1;
             }
-            else if (winningShape == 'o')
+            else if (winningShape == 'O')
             {
                 winner = 2;
             }
