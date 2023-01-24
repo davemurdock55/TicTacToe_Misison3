@@ -12,7 +12,7 @@ namespace TicTacToe_Misison3
             // print out a pretty board, subing in arr values for t
         {
             // The squares on the board
-            Console.WriteLine("   a     b     c  ");
+            Console.WriteLine("   1     2     3  ");
             Console.WriteLine("      |     |     ");
             Console.WriteLine("1  " + arr[0, 0] + "  |  " + arr[1, 0] + "  |  " + arr[2, 0] + "  ");
             Console.WriteLine(" _____|_____|_____");

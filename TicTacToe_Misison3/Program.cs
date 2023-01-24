@@ -69,7 +69,7 @@ namespace TicTacToe_Misison3
 
 
             // Give the user some Instructions on how to play
-            Console.WriteLine("In order to say where you want to go, you need to specify the column and then the row (using numbers). For the columns, A = 1, B = 2, C = 3.");
+            Console.WriteLine("In order to say where you want to go, you need to specify the column and then the row (using numbers). E.g. Column 2 and Row 2 gives you the middle square");
 
 
             // START PLAYING
