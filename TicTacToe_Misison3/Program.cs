@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 // Driver Class
 
@@ -7,32 +7,44 @@ namespace TicTacToe_Misison3
 {
     class Program
     {
-        public static void TESTFunction()
+        public static bool OutofSpace(char[,] array)
         {
-            char[,] array = new char[3, 3];
-            array[0, 0] = 'X';
-            array[1, 0] = 'X';
-            array[2, 0] = 'X';
-            Supporting sup = new Supporting();
-            Console.WriteLine(sup.determineWinner(array));
+            // initializing the bOutofSpace variable
+            bool bOutofSpace = true;
+
+            // Check to see if there are still empty spaces on the board
+            for (int icol = 0; icol < 3; icol++)
+            {
+                for (int irow = 0; irow < 3; irow++)
+                {
+                    if (array[icol, irow] == ' ')
+                    {
+                        bOutofSpace = false;
+                        break;
+                    }
+                }
+
+                if (bOutofSpace == false)
+                {
+                    bOutofSpace = false;
+                    break;
+                }
+
+            }
+
+            return bOutofSpace;
+
         }
 
         static void Main(string[] args)
         {
-
-            // Testing the program to see if it works
-            Program.TESTFunction();
-
             // Initializing the cCurrentPlayer character variable
-            char cCurrentPlayer = ' ';
-            
-            // Initializing the iPos (position) variable
-            int iPos = 0;
+            char cCurrentPlayer = 'X';
 
             // Initializing the cWinner Variable
             int cWinner = 0;
 
-            // Create a game board array to store the players’ choices (holds markers "X" and "O")
+            // Create a game board array to store the players' choices (holds markers "X" and "O")
             char[,] aPlayerChoices = new char[3, 3];
 
 
@@ -62,8 +74,7 @@ namespace TicTacToe_Misison3
 
             // START PLAYING
 
-            // setting the current player to 'X' (player 1)
-            cCurrentPlayer = 'X';
+
 
 
             // WIN CONDITION OUTER LOOP
@@ -78,32 +89,10 @@ namespace TicTacToe_Misison3
                 // Print the current Board
                 supporting.printBoard(aPlayerChoices);
 
-                
-                
-                bool bOutofSpace = true;
 
-                // Check to see if there are still empty spaces on the board
-                for (int icol = 0; icol < 3; icol++)
-                {
-                    for (int irow = 0; irow < 3; irow++)
-                    {
-                        if (aPlayerChoices[icol, irow] == ' ')
-                        {
-                            bOutofSpace = false;
-                            break;
-                        }
-                    }
-
-                    if (bOutofSpace == false)
-                    {
-                        bOutofSpace = false;
-                        break;
-                    }
-
-                }
 
                 // No more space on the board (Tie)
-                if (bOutofSpace == true)
+                if (OutofSpace(aPlayerChoices) == true)
                 {
                     Console.WriteLine("Looks like you tied!!!");
                     break;
@@ -120,13 +109,13 @@ namespace TicTacToe_Misison3
                 int row = 0;
                 int column = 0;
 
+
                 // initializing the bFreeSpace variable
                 bool bFreeSpace = true;
                 
                 // checking to see if their space is empty
                 while (bFreeSpace == true)
                 {
-
 
                     Console.WriteLine("Input column you want to input:");
                     column = Convert.ToInt32(Console.ReadLine()) - 1;
@@ -136,41 +125,54 @@ namespace TicTacToe_Misison3
                     row = Convert.ToInt32(Console.ReadLine()) - 1;
 
 
+                    // If the spot they selected is empty
                     if (aPlayerChoices[column, row] == ' ')
                     {
-                        // add the player's marker (X or O) (held in cCurrentPlayer) to the array
-                         aPlayerChoices[column, row] = cCurrentPlayer;
-
-                        // Now the space is not free
+                        // If the player chose a free space, that space is about to no longer be free
                         bFreeSpace = false;
                     }
+                    // if the spot they selected was filled already by a letter (not ' ')
                     else
                     {
+                        // Telling the user to select another spot
                         Console.WriteLine("\nHey! You can't go there!!!\n");
                     }
 
-
+                    // loop will keep executing as long as they try to go somewhere that has already been taken
 
                 }
 
+                // Add the player's marker (X or O) (held in cCurrentPlayer) to the array
+                aPlayerChoices[column, row] = cCurrentPlayer;
 
-                // Running the determineWinner method from the Supporting class and putting the result in the cWinner variable
+
+                // Determining the winner by using the determineWinner function form the Supporting class and putting the result in the cWinner variable
                 cWinner = supporting.determineWinner(aPlayerChoices);
 
 
                 if (cWinner == 1)
                 {
+                    supporting.printBoard(aPlayerChoices);
                     Console.WriteLine("Looks like X's won this time!!!");
+
                     break;
                 }
                 else if (cWinner == 2)
                 {
+                    supporting.printBoard(aPlayerChoices);
                     Console.WriteLine("Looks like O's won this time!!!");
+
                     break;
                 }
+  
 
-
-                // Change players
+                // No more space on the board (Tie)
+                if (OutofSpace(aPlayerChoices) == true)
+                {
+                    supporting.printBoard(aPlayerChoices);
+                    Console.WriteLine("Looks like you tied!!!");
+                    break;
+                }
 
                 // If the current player is 'X' (Player 1)
                 if (cCurrentPlayer == 'X')
@@ -187,11 +189,11 @@ namespace TicTacToe_Misison3
 
 
             }
-            
 
-            
 
-            
+
+
+
 
 
             // when a win has occurred and which player won the game
@@ -200,3 +202,26 @@ namespace TicTacToe_Misison3
         }
     }
 }
+
+
+// start of main program (intializing everything)
+// Intro
+
+// Main game While loop (cWinner == 0)
+// Player X goes
+// show board
+
+// check winner
+// cWinner = X or O
+// check if the board is out of space
+// cWinner = T
+
+// Player O goes
+// show board
+
+// check winner
+// cWinner = X or O
+// check if the board is out of space
+// cWinner = T
+
+// Put the turn into a function and pass it the cCurrentPlayer variable
