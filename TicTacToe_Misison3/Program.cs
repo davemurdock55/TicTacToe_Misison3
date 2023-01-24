@@ -202,26 +202,3 @@ namespace TicTacToe_Misison3
         }
     }
 }
-
-
-// start of main program (intializing everything)
-// Intro
-
-// Main game While loop (cWinner == 0)
-// Player X goes
-// show board
-
-// check winner
-// cWinner = X or O
-// check if the board is out of space
-// cWinner = T
-
-// Player O goes
-// show board
-
-// check winner
-// cWinner = X or O
-// check if the board is out of space
-// cWinner = T
-
-// Put the turn into a function and pass it the cCurrentPlayer variable

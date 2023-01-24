@@ -10,7 +10,8 @@ namespace TicTacToe_Misison3
     {
         public void printBoard(char[,] arr)
             // print out a pretty board, subing in arr values for t
-        {he squares on the board
+        {
+            // The squares on the board
             Console.WriteLine("   a     b     c  ");
             Console.WriteLine("      |     |     ");
             Console.WriteLine("1  " + arr[0, 0] + "  |  " + arr[1, 0] + "  |  " + arr[2, 0] + "  ");
