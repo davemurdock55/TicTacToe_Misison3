@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,8 +9,8 @@ namespace TicTacToe_Misison3
     class Supporting
     {
         public void printBoard(char[,] arr)
-        {
-            // print out a pretty board, subing in arr values for the squares on the board
+            // print out a pretty board, subing in arr values for t
+        {he squares on the board
             Console.WriteLine("   a     b     c  ");
             Console.WriteLine("      |     |     ");
             Console.WriteLine("1  " + arr[0, 0] + "  |  " + arr[1, 0] + "  |  " + arr[2, 0] + "  ");
@@ -33,13 +33,13 @@ namespace TicTacToe_Misison3
             char winningShape = ' ';
 
             // check the top left to bottom right diagonal
-            if ((arr[0,0] == arr[1,1]) && (arr[0,0] == arr[2,2]))
+            if ((arr[0,0] == arr[1,1]) && (arr[0,0] == arr[2,2]) && ((arr[0, 0] == 'X') || (arr[0, 0] == 'O')))
             {
                 winningShape = arr[0, 0];
             }
 
             // check the top right to bottom left diagonal
-            if ((arr[2, 0] == arr[1, 1]) && (arr[2, 0] == arr[0, 2]))
+            if ((arr[2, 0] == arr[1, 1]) && (arr[2, 0] == arr[0, 2]) && ((arr[2, 0] == 'X') || (arr[2, 0] == 'O')))
             {
                 winningShape = arr[2, 0];
             }
@@ -47,7 +47,7 @@ namespace TicTacToe_Misison3
             // loop through the rows and check if all values in row are equal
             for (int i = 0; i < 3; i++)
             {
-                if ((arr[0, i] == arr[1, i]) && (arr[0, i] == arr[2, i]))
+                if ((arr[0, i] == arr[1, i]) && (arr[0, i] == arr[2, i]) && ((arr[0, i] == 'X') || (arr[0, i] == 'O')))
                 {
                     winningShape = arr[0, i];
                 }
@@ -56,18 +56,18 @@ namespace TicTacToe_Misison3
             // loop through the cols and check if all values in cols are equal
             for (int i = 0; i < 3; i++)
             {
-                if ((arr[i, 0] == arr[i, 1]) && (arr[i, 0] == arr[i, 2]))
+                if ((arr[i, 0] == arr[i, 1]) && (arr[i, 0] == arr[i, 2]) && ((arr[0, i] == 'X') || (arr[0, i] == 'O')))
                 {
                     winningShape = arr[i, 0];
                 }
             }
 
             // check if x or o has won and set the return value
-            if (winningShape == 'x')
+            if (winningShape == 'X')
             {
                 winner = 1;
             }
-            else if (winningShape == 'o')
+            else if (winningShape == 'O')
             {
                 winner = 2;
             }
